@@ -13,12 +13,16 @@ const Carosel = () => {
                         <h1 className="mb-5 text-5xl font-bold">Selling Point</h1>
                         <p className="mb-5">Selling point the most trusted website ,Daily 6000+ selling site</p>
                         <button className="btn btn-primary">Get Started</button>
+
+
                     </div>
                 </div>
             </div>
 
             <div>
                 <div className="hero mt-5 mb-40">
+
+
                     <div className="hero-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                         <div className=' relative mb-20'>
                             <img src="https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=1200" className=" w-4/5 h-full rounded-lg shadow-2xl" alt='' />
