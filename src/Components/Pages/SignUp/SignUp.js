@@ -48,7 +48,7 @@ const SignUp = () => {
 
     const saveUser = (name, email, password, type) => {
         const user = { name, email, password, type }
-        fetch("https://sell-point-server-ffnado53p-galib6.vercel.app/users", {
+        fetch("https://sell-point-server.vercel.app/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -73,14 +73,10 @@ const SignUp = () => {
                 const currentUser = {
                     email: user.email
                 }
-                const userData = {
-                    name: user.displayName,
-                    email: user.email,
-                    type: "buyer"
 
-                }
+                console.log(currentUser)
                 // get jwt token
-                fetch('https://sell-point-server-ffnado53p-galib6.vercel.app/jwt', {
+                fetch('https://sell-point-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -93,11 +89,15 @@ const SignUp = () => {
                         console.log(data);
                         // local storage is the easiest but not the best place to store jwt token
                         localStorage.setItem('s-token', data.token);
-
                     });
 
+                const userData = {
+                    name: user.displayName,
+                    email: user.email,
+                    type: "buyer"
 
-                fetch("https://sell-point-server-ffnado53p-galib6.vercel.app/gsignup", {
+                }
+                fetch("https://sell-point-server.vercel.app/gsignup", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",

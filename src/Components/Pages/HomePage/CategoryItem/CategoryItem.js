@@ -8,7 +8,7 @@ const CategoryItem = () => {
     const [categores, setcategores] = useState([]);
     useEffect(() => {
         axios
-            .get("https://sell-point-server-ffnado53p-galib6.vercel.app/category")
+            .get("https://sell-point-server.vercel.app/category")
             .then((res) => setcategores(res.data))
 
     }, []);

@@ -27,7 +27,7 @@ const Login = () => {
                 }
                 // console.log(currentUser)
                 navigate(from, { replace: true });
-                fetch('https://sell-point-server-ffnado53p-galib6.vercel.app/jwt', {
+                fetch('https://sell-point-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -82,8 +82,6 @@ const Login = () => {
                     </div>
                 </form>
                 <p>New to Selling Point? <Link className='text-secondary' to="/signup">Create new Account</Link></p>
-                <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

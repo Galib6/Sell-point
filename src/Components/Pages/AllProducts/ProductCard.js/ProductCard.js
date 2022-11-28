@@ -18,7 +18,7 @@ const ProductCard = ({ product, setProduct }) => {
             Owner: product.Owner,
             email: product.email,
         }
-        fetch("https://sell-point-server-ffnado53p-galib6.vercel.app/reportedtoadmin", {
+        fetch("https://sell-point-server.vercel.app/reportedtoadmin", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

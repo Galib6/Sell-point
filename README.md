@@ -6,6 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Reseal Selling website
 
+## Attention:: Before use this site disable adblock
+
 ## Clent github 
 https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-Galib6
 

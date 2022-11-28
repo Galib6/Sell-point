@@ -16,7 +16,7 @@ const Allbuyers = () => {
     const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ["buyers"],
         queryFn: async () => {
-            const res = await fetch("https://sell-point-server-ffnado53p-galib6.vercel.app/allbuyers");
+            const res = await fetch("https://sell-point-server.vercel.app/allbuyers");
             const data = await res.json();
             console.log(data)
             return data;
@@ -25,7 +25,7 @@ const Allbuyers = () => {
 
     const handleDeleteBuyer = (id) => {
         console.log(id)
-        fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/buyer/${id}`, {
+        fetch(`https://sell-point-server.vercel.app/buyer/${id}`, {
             method: 'DELETE',
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

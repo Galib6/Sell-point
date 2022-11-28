@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/category/:id",
-                loader: ({ params }) => fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/category/${params.id}`),
+                loader: ({ params }) => fetch(`https://sell-point-server.vercel.app/category/${params.id}`),
                 element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>
             },
             {
@@ -90,7 +90,7 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/payment/:id",
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/payforbook/${params.id}`)
+                loader: ({ params }) => fetch(`https://sell-point-server.vercel.app/payforbook/${params.id}`)
 
             },
 
