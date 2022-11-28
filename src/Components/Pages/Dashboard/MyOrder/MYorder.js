@@ -2,18 +2,24 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../context/AuthProvider';
+import Loading from '../../../Shared/Loading/Loading';
 
 const MYorder = () => {
     const { user } = useContext(AuthContext)
-    const { data: myorders = [], refetch } = useQuery({
+    const { data: myorders = [], refetch, isLoading } = useQuery({
         queryKey: ["myorders"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myorders?email=${user?.email}`);
+            const res = await fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/myorders?email=${user?.email}`);
             const data = await res.json();
             console.log(data)
             return data;
         }
     })
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
 
     return (
         <div>

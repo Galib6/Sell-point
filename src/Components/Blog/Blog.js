@@ -14,34 +14,42 @@ const Blog = () => {
                         <div className="grid gap-8 row-gap-10 lg:grid-cols-2">
                             <div className="max-w-md sm:mx-auto sm:text-center">
 
-                                <h6 className="mb-3 text-xl text-black-600 font-bold leading-5">Ques: Difference between SQL and NoSQL</h6>
+                                <h6 className="mb-3 text-xl text-black-600 font-bold leading-5">Ques: What are the different ways to manage a state in a React application</h6>
                                 <p className="mb-3 text-m text-black-600">
-                                    Ans: SQL is the programming language used to interface with relational databases. (Relational databases model data as records in rows and tables with logical links between them). NoSQL is a class of DBMs that are non-relational and generally do not use SQL.
+                                    Ans: There are four main types of state you need to properly manage in your React apps: <br />
+
+                                    Local state
+                                    Global state
+                                    Server state
+                                    URL state
+                                    Let's cover each of these in detail: <br />
+
+                                    Local (UI) state – Local state is data we manage in one or another component.Local state is most often managed in React using the useState hook. <br />
+
+                                    Global (UI) state – Global state is data we manage across multiple components.Global state is necessary when we want to get and update data anywhere in our app, or in multiple components at least. <br />
+
+                                    Server state – Data that comes from an external server that must be integrated with our UI state.Server state is a simple concept, but can be hard to manage alongside all of our local and global UI state. <br />
+
+                                    URL state – Data that exists on our URLs, including the pathname and query parameters.URL state is often missing as a category of state, but it is an important one. <br />
                                 </p>
 
                             </div>
                             <div className="max-w-md sm:mx-auto sm:text-center">
 
-                                <h6 className="mb-3 text-xl text-black-600 font-bold leading-5">Ques: What is JWT, and how does it work?
+                                <h6 className="mb-3 text-xl text-black-600 font-bold leading-5">Ques: How does prototypical inheritance work?
                                 </h6>
                                 <p className="mb-3 text-m text-black-600">
-                                    Ans:JSON Web Token (JWT) is an open standard (RFC 7519) for securely transmitting information between parties as JSON object.
-                                    It is compact, readable and digitally signed using a private key/ or a public key pair by the Identity Provider(IdP). So the integrity and authenticity of the token can be verified by other parties involved.
-                                    The purpose of using JWT is not to hide data but to ensure the authenticity of the data. JWT is signed and encoded, not encrypted.
+                                    Ans:The Prototypal Inheritance is a feature in javascript used to add methods and properties in objects. It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the [[Prototype]] of an object, we use Object.getPrototypeOf and Object.setPrototypeOf. Nowadays, in modern language, it is being set using
                                 </p>
 
                             </div>
                             <div className="max-w-md sm:mx-auto sm:text-center">
 
-                                <h6 className="mb-3 text-xl text-black-600 font-bold leading-5">Ques:What is the difference between javascript and NodeJS?
+                                <h6 className="mb-3 text-xl text-black-600 font-bold leading-5">Ques:What is a unit test? Why should we write unit tests?
                                 </h6>
                                 <p className="mb-3 text-m text-black-600">
 
-                                    Ans: 1. NodeJS :
-                                    NodeJS is a cross-platform and opensource Javascript runtime environment that allows the javascript to be run on the server-side. Nodejs allows Javascript code to run outside the browser. Nodejs comes with a lot of modules and mostly used in web development.
-
-                                    2. JavaScript :
-                                    Javascript is a Scripting language. It is mostly abbreviated as JS. It can be said that Javascript is the updated version of the ECMA script. Javascript is a high-level programming language that uses the concept of Oops but it is based on prototype inheritance.
+                                    Ans: Unit testing is a software development process in which the smallest testable parts of an application, called units, are individually and independently scrutinized for proper operation. This testing methodology is done during the development process by the software developers and sometimes QA staff.  The main objective of unit testing is to isolate written code to test and determine if it works as intended.Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages.
                                 </p>
                             </div>
                             <div className="max-w-md sm:mx-auto sm:text-center">
@@ -52,9 +60,7 @@ const Blog = () => {
 
                                 </h6>
                                 <p className="mb-3 text-sm text-black-600">
-                                    Ans: NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them. EventLoop is the listener for the EventQueue.
-
-                                    If NodeJS can process the request without I/O blocking then the event loop would itself process the request and sends the response back to the client by itself. But, it is possible to process multiple requests parallelly using the NodeJS cluster module or worker_threads module.
+                                    Ans: Vue provides higher customizability and hence is easier to learn than Angular or React. Further, Vue has an overlap with Angular and React with respect to their functionality like the use of components. Hence, the transition to Vue from either of the two is an easy option.
                                 </p>
                             </div>
                         </div>

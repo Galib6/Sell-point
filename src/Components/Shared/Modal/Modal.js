@@ -20,7 +20,7 @@ const Modal = ({ product, setProduct }) => {
         const updatedData = Object.assign(data, date)
         console.log(updatedData)
 
-        fetch(`http://localhost:5000/bookings`, {
+        fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/bookings`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -33,7 +33,7 @@ const Modal = ({ product, setProduct }) => {
                 // setCreatedUserEmail(email);
                 console.log(data)
                 console.log(product._id)
-                fetch(`http://localhost:5000/bookings/${product?._id}`)
+                fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/bookings/${product?._id}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data.modifiedCount > 0) {

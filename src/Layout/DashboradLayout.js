@@ -23,7 +23,7 @@ const DashboradLayout = () => {
             <Header></Header>
             <div className='grid lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-4'>
                 <div className='col-span-1 '>
-                    <ul className="menu p-4 w-80  text-base-content rounded-box">
+                    <ul className=" pt-20 menu p-4 w-80  text-base-content rounded-box min-h-screen border border-black-300">
                         {
                             isAdmin &&
                             <>

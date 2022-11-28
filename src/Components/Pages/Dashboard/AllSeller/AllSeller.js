@@ -13,7 +13,7 @@ const Allusers = () => {
     const { data: sellers = [], refetch, isLoading } = useQuery({
         queryKey: ["sellers"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/allsellers");
+            const res = await fetch("https://sell-point-server-ffnado53p-galib6.vercel.app/allsellers");
             const data = await res.json();
             console.log(data)
             return data;
@@ -23,7 +23,7 @@ const Allusers = () => {
 
     const handleDeleteSeller = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/seller/${id}`, {
+        fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/seller/${id}`, {
             method: 'DELETE',
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -42,7 +42,7 @@ const Allusers = () => {
     const handlevarify = (seller) => {
         console.log(seller)
         if (window.confirm("Are you sure to verify") === true) {
-            fetch(`http://localhost:5000/varified?email=${seller?.email}`)
+            fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/varified?email=${seller?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
@@ -53,6 +53,10 @@ const Allusers = () => {
 
         }
 
+    }
+
+    if (isLoading) {
+        return <Loading></Loading>
     }
 
 

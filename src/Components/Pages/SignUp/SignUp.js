@@ -48,7 +48,7 @@ const SignUp = () => {
 
     const saveUser = (name, email, password, type) => {
         const user = { name, email, password, type }
-        fetch("http://localhost:5000/users", {
+        fetch("https://sell-point-server-ffnado53p-galib6.vercel.app/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -80,7 +80,7 @@ const SignUp = () => {
 
                 }
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://sell-point-server-ffnado53p-galib6.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -97,7 +97,7 @@ const SignUp = () => {
                     });
 
 
-                fetch("http://localhost:5000/gsignup", {
+                fetch("https://sell-point-server-ffnado53p-galib6.vercel.app/gsignup", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",

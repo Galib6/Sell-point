@@ -9,7 +9,7 @@ const MyProductList = () => {
     const { data: prodcuts = [], refetch } = useQuery({
         queryKey: ["prodcuts"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/product?email=${user?.email}`);
+            const res = await fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/product?email=${user?.email}`);
             const data = await res.json();
             console.log(data)
             return data;
@@ -35,7 +35,7 @@ const MyProductList = () => {
         }
         console.log(updatedProduct)
 
-        fetch('http://localhost:5000/advertise', {
+        fetch('https://sell-point-server-ffnado53p-galib6.vercel.app/advertise', {
             method: 'POST',
             headers: {
                 "content-type": "application/json",
@@ -46,7 +46,7 @@ const MyProductList = () => {
             .then(res => res.json())
             .then(res => {
                 console.log(res)
-                fetch(`http://localhost:5000/advertise/${product?._id}`)
+                fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/advertise/${product?._id}`)
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)

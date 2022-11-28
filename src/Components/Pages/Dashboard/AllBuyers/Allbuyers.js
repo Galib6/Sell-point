@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../context/AuthProvider';
 import useAdmin from '../../../../hooks/useAdmin';
+import Loading from '../../../Shared/Loading/Loading';
 
 const Allbuyers = () => {
     const navigate = useNavigate()
@@ -12,10 +13,10 @@ const Allbuyers = () => {
     console.log(isAdmin)
 
 
-    const { data: buyers = [], refetch } = useQuery({
+    const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ["buyers"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/allbuyers");
+            const res = await fetch("https://sell-point-server-ffnado53p-galib6.vercel.app/allbuyers");
             const data = await res.json();
             console.log(data)
             return data;
@@ -24,7 +25,7 @@ const Allbuyers = () => {
 
     const handleDeleteBuyer = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/buyer/${id}`, {
+        fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/buyer/${id}`, {
             method: 'DELETE',
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -39,6 +40,9 @@ const Allbuyers = () => {
             })
     }
 
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div>

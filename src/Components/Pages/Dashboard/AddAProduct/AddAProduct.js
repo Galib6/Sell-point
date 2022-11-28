@@ -41,7 +41,7 @@ const AddAProduct = () => {
 
                     }
                     // console.log(productData.postTime)
-                    fetch("http://localhost:5000/addproduct", {
+                    fetch("https://sell-point-server-ffnado53p-galib6.vercel.app/addproduct", {
                         method: "POST",
                         headers: {
                             "content-type": "application/json",

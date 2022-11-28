@@ -5,7 +5,7 @@ const ReportedItems = () => {
     const { data: reporteds = [], refetch } = useQuery({
         queryKey: ["reporteds"],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/reportedtoadmin');
+            const res = await fetch('https://sell-point-server-ffnado53p-galib6.vercel.app/reportedtoadmin');
             const data = await res.json();
             console.log(data)
             return data;

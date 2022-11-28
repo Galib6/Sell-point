@@ -20,7 +20,7 @@ const ModalFAdvertise = ({ product, setProduct, refetch }) => {
         const updatedData = Object.assign(data, date)
         console.log(updatedData)
 
-        fetch(`http://localhost:5000/bookings`, {
+        fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/bookings`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -32,19 +32,19 @@ const ModalFAdvertise = ({ product, setProduct, refetch }) => {
                 // setCreatedUserEmail(email);
                 console.log(data)
                 console.log(product._id)
-                fetch(`http://localhost:5000/bookings/${product?.ind}`)
+                fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/bookings/${product?.ind}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data.modifiedCount > 0) {
                             setProduct(null)
                             toast.success("Successfully booked.")
-                            fetch(`http://localhost:5000/changestatus/${product?.ind}`)
+                            fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/changestatus/${product?.ind}`)
                                 .then(res => res.json())
                                 .then(data => {
                                     console.log(data)
                                     if (data.modifiedCount > 0) {
                                         toast.success("Sucesfully status changed.")
-                                        fetch(`http://localhost:5000/advertised/${product._id}`, {
+                                        fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/advertised/${product._id}`, {
                                             method: 'DELETE',
                                             // headers: {
                                             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

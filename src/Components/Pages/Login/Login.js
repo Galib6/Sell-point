@@ -27,7 +27,7 @@ const Login = () => {
                 }
                 // console.log(currentUser)
                 navigate(from, { replace: true });
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://sell-point-server-ffnado53p-galib6.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

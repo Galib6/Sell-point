@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Carosel = () => {
     return (
         <div>
-            <div className="hero min-h-screen" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
+            <div className="hero min-h-screen" style={{ backgroundImage: `url("https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200")` }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
