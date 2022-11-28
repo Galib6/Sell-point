@@ -9,8 +9,11 @@ const useAdmin = email => {
                 .then(res => res.json())
                 .then(data => {
                     // console.log(data)
-                    if (data.type === "admin") {
+                    if (data?.type === "admin") {
                         setIsAdmin(true)
+                        setAdminLoading(false)
+                    }
+                    else {
                         setAdminLoading(false)
                     }
                 })

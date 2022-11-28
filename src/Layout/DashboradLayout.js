@@ -15,7 +15,7 @@ const DashboradLayout = () => {
     const [isAdmin] = useAdmin(user?.email)
     console.log(isAdmin)
     const [isSeller] = useSeller(user?.email)
-    console.log(isSeller)
+    // console.log(isSeller)
 
 
     return (
@@ -29,7 +29,7 @@ const DashboradLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dash-borad-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80  text-base-content">
+                    <ul className="menu p-4 w-80  text-base-content rounded-box">
                         {
                             isAdmin &&
                             <>

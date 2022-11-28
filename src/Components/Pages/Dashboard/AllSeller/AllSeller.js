@@ -1,15 +1,23 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../../../context/AuthProvider';
+import useAdmin from '../../../../hooks/useAdmin';
+import Loading from '../../../Shared/Loading/Loading';
 
 const Allusers = () => {
-    const { data: sellers = [], refetch } = useQuery({
+    const { user, logOut } = useContext(AuthContext)
+    const [isAdmin] = useAdmin(user?.email)
+    console.log(isAdmin)
+
+    const { data: sellers = [], refetch, isLoading } = useQuery({
         queryKey: ["sellers"],
         queryFn: async () => {
             const res = await fetch("http://localhost:5000/allsellers");
             const data = await res.json();
             console.log(data)
             return data;
+
         }
     })
 
@@ -30,6 +38,24 @@ const Allusers = () => {
             })
     }
 
+
+    const handlevarify = (seller) => {
+        console.log(seller)
+        if (window.confirm("Are you sure to verify") === true) {
+            fetch(`http://localhost:5000/varified?email=${seller?.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    toast.success("Successfully varified")
+
+                })
+
+
+        }
+
+    }
+
+
     return (
         <div>
             <h2 className='text-3xl mb-2'>All Sellers</h2>
@@ -42,7 +68,7 @@ const Allusers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Delete</th>
+                            <th>Delete/Varify</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,7 +80,9 @@ const Allusers = () => {
                                     <td>{seller.name}</td>
                                     <td>{seller.email}</td>
                                     <td>{seller.type}</td>
-                                    <td><button className='btn btn-xs btn-danger' onClick={() => handleDeleteSeller(seller._id)}>Delete</button></td>
+                                    <td>
+                                        <button className='btn btn-xs btn-danger' onClick={() => handleDeleteSeller(seller._id)}>Delete</button>
+                                        <button className='btn btn-xs btn-danger' onClick={() => handlevarify(seller)}>Varify</button></td>
                                 </tr>)
                         }
 
@@ -63,6 +91,7 @@ const Allusers = () => {
             </div>
         </div>
     );
+
 };
 
 export default Allusers;

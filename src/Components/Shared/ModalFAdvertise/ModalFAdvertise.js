@@ -14,7 +14,8 @@ const ModalFAdvertise = ({ product, setProduct, refetch }) => {
     const handleBookNow = data => {
         console.log(data);
         const date = {
-            time: Date().slice(0, 15)
+            time: Date().slice(0, 15),
+            price: product.resalePrice * 10
         }
         const updatedData = Object.assign(data, date)
         console.log(updatedData)

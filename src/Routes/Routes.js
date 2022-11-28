@@ -14,6 +14,7 @@ import Payment from "../Components/Pages/Payment/Payment";
 import SignUp from "../Components/Pages/SignUp/SignUp";
 import DashboradLayout from "../Layout/DashboradLayout";
 import Main from "../Layout/Main";
+import AdminRoute from "./AdminRoutes/AdminRoutes";
 
 export const router = createBrowserRouter([
     {
@@ -54,12 +55,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/allseller",
-                element: <AllSeller></AllSeller>,
+                element: <AdminRoute><AllSeller></AllSeller></AdminRoute>,
 
             },
             {
                 path: "/dashboard/allbuyers",
-                element: <Allbuyers></Allbuyers>,
+                element: <AdminRoute><Allbuyers></Allbuyers></AdminRoute>,
 
             },
             {
@@ -76,7 +77,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/reported",
-                element: <ReportedItems></ReportedItems>
+                element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>
             },
             {
                 path: "/dashboard/payment/:id",

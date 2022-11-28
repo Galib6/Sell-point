@@ -3,21 +3,19 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
+import { FaGoogle } from 'react-icons/fa';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const { createUser, updateUser, setUser } = useContext(AuthContext);
+    const { createUser, updateUser, setUser, signInwithGoolge, setLoading } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
-
-    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    // const [createdUserEmail, setCreatedUserEmail] = useState('')
     // const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
-
-    // if (token) {
-    //     navigate("/")
-    // }
+    const provider = new GoogleAuthProvider();
 
 
 
@@ -61,6 +59,62 @@ const SignUp = () => {
             .then(data => {
                 // setCreatedUserEmail(email);
                 console.log(data)
+            })
+    }
+
+    const handleGoogleSignIn = () => {
+        signInwithGoolge(provider)
+            .then(res => {
+                setLoading(true)
+                const user = res.user;
+                setUser(user)
+                toast.success("Seccessfully Sign up")
+
+                const currentUser = {
+                    email: user.email
+                }
+                const userData = {
+                    name: user.displayName,
+                    email: user.email,
+                    type: "buyer"
+
+                }
+                // get jwt token
+                // fetch('https://assignment-11-server-rust.vercel.app/jwt', {
+                //     method: 'POST',
+                //     headers: {
+                //         'content-type': 'application/json'
+                //     },
+                //     body: JSON.stringify(currentUser)
+                // })
+
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         console.log(data);
+                //         // local storage is the easiest but not the best place to store jwt token
+                //         localStorage.setItem('genius-token', data.token);
+                //         
+                //     });
+
+
+                fetch("http://localhost:5000/gsignup", {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                        // authorization: `bearer ${localStorage.getItem("accessToken")}`
+                    },
+                    body: JSON.stringify(userData)
+                })
+                    .then(res => res.json())
+                    .then(res => {
+                        console.log(res)
+                        setLoading(false)
+                    })
+
+
+            })
+            .catch(err => {
+                console.error(err)
             })
     }
 
@@ -110,6 +164,7 @@ const SignUp = () => {
                                     type="radio"
                                     value="buyer"
                                     id="Buyer"
+                                    defaultChecked
                                     className='radio h-4 w-4 radio-primary'
                                 />
                                 <span className='ml-3'>Buyer</span>
@@ -134,7 +189,7 @@ const SignUp = () => {
                 </form>
                 <p>Already have an account?<Link className='text-primary' to="/login"> Please Login</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleSignIn} className=" mb-5 mr-5 btn btn-outline btn-ghost w-full">< FaGoogle /><span className='ml-2'>google</span></button>
 
             </div>
         </div>

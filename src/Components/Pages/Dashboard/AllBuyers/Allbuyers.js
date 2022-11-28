@@ -1,8 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../../context/AuthProvider';
+import useAdmin from '../../../../hooks/useAdmin';
 
 const Allbuyers = () => {
+    const navigate = useNavigate()
+    const { user, logOut } = useContext(AuthContext)
+    const [isAdmin] = useAdmin(user?.email)
+    console.log(isAdmin)
+
+
     const { data: buyers = [], refetch } = useQuery({
         queryKey: ["buyers"],
         queryFn: async () => {
@@ -29,6 +38,8 @@ const Allbuyers = () => {
                 }
             })
     }
+
+
     return (
         <div>
             <h2 className='text-3xl mb-2'>All buyers</h2>

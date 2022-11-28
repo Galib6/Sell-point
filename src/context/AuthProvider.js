@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth"
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth"
 import app from '../Components/Firebase/Firebase.config';
 import { useNavigate } from 'react-router-dom';
 
@@ -41,6 +41,10 @@ const AuthProvider = ({ children }) => {
         return () => unsubscribe();
     }, [])
 
+    const signInwithGoolge = (provider) => {
+        return signInWithPopup(auth, provider)
+    }
+
     const authifo = {
         createUser,
         signIn,
@@ -49,7 +53,8 @@ const AuthProvider = ({ children }) => {
         setLoading,
         loading,
         logOut,
-        updateUser
+        updateUser,
+        signInwithGoolge
     }
 
     return (

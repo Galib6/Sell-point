@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from '../../../Shared/Modal/Modal';
 import { GoReport } from "react-icons/go";
 import toast from 'react-hot-toast';
+import { HiOutlineBadgeCheck } from "react-icons/hi";
 
 const ProductCard = ({ product, setProduct }) => {
 
@@ -50,8 +51,15 @@ const ProductCard = ({ product, setProduct }) => {
                         <p>Location: {product.Location}</p>
                     </div>
                     <div className="card-actions justify-between">
-                        <div className="badge badge-outline">Owner: {product.Owner}</div>
-
+                        <div className='grid grid-cols-2'>
+                            <span>Owner: {product.Owner}</span>
+                            {
+                                product?.varified &&
+                                <span className='ml-2' title='Varified Seller' ><HiOutlineBadgeCheck style={{
+                                    color: 'blue',
+                                }} size={25} /></span>
+                            }
+                        </div>
                         {
                             product.bookingType === "Book Now" &&
                             <label
