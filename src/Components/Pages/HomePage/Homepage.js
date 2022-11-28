@@ -4,6 +4,8 @@ import Carosel from './Carosel/Carosel';
 import CategoryItem from './CategoryItem/CategoryItem';
 
 const Homepage = () => {
+
+
     return (
         <div className='lg:mx-16 sm:mx-0'>
             <Carosel></Carosel>
