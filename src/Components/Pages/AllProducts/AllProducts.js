@@ -19,6 +19,8 @@ const AllProducts = () => {
             <div className="divider"></div>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-8 gap-6'>
                 {
+
+
                     products.map(product =>
                         <ProductCard
                             key={product._id}
