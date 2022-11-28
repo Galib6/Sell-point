@@ -21,14 +21,8 @@ const DashboradLayout = () => {
     return (
         <div>
             <Header></Header>
-            <div className="drawer drawer-mobile">
-                <input id="dash-borad-drawer" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content  ">
-                    <Outlet></Outlet>
-
-                </div>
-                <div className="drawer-side">
-                    <label htmlFor="dash-borad-drawer" className="drawer-overlay"></label>
+            <div className='grid grid-cols-4'>
+                <div className='col-span-1 '>
                     <ul className="menu p-4 w-80  text-base-content rounded-box">
                         {
                             isAdmin &&
@@ -53,6 +47,9 @@ const DashboradLayout = () => {
                         }
 
                     </ul>
+                </div>
+                <div className='min-h-screen col-span-3'>
+                    <Outlet></Outlet>
                 </div>
             </div>
             <Footer></Footer>

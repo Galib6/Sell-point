@@ -15,6 +15,7 @@ import SignUp from "../Components/Pages/SignUp/SignUp";
 import DashboradLayout from "../Layout/DashboradLayout";
 import Main from "../Layout/Main";
 import AdminRoute from "./AdminRoutes/AdminRoutes";
+import PrivateRoute from "./PrivetRoute/PrivetRoute";
 
 export const router = createBrowserRouter([
     {
@@ -28,7 +29,7 @@ export const router = createBrowserRouter([
             {
                 path: "/category/:id",
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
-                element: <AllProducts></AllProducts>
+                element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>
             },
             {
                 path: "/login",
