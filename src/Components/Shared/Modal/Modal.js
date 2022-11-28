@@ -14,7 +14,8 @@ const Modal = ({ product, setProduct }) => {
         console.log(data);
         const date = {
             time: Date().slice(0, 15),
-            price: product.resalePrice * 10
+            price: product.resalePrice * 10,
+            ind: product._id
         }
         const updatedData = Object.assign(data, date)
         console.log(updatedData)
@@ -22,7 +23,8 @@ const Modal = ({ product, setProduct }) => {
         fetch(`http://localhost:5000/bookings`, {
             method: "POST",
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                authorization: `bearer ${localStorage.getItem("s-token")}`
             },
             body: JSON.stringify(updatedData)
         })

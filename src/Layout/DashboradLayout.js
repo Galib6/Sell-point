@@ -21,7 +21,7 @@ const DashboradLayout = () => {
     return (
         <div>
             <Header></Header>
-            <div className='grid grid-cols-4'>
+            <div className='grid lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-4'>
                 <div className='col-span-1 '>
                     <ul className="menu p-4 w-80  text-base-content rounded-box">
                         {

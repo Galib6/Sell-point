@@ -8,7 +8,7 @@ import { AuthContext } from '../../../context/AuthProvider';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { signIn } = useContext(AuthContext);
+    const { signIn, setLoading } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
@@ -22,7 +22,28 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                const currentUser = {
+                    email: user.email
+                }
+                // console.log(currentUser)
                 navigate(from, { replace: true });
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        // local storage is the easiest but not the best place to store jwt token
+                        localStorage.setItem('s-token', data.token);
+                        setLoading(false)
+                    });
+
+
             })
             .catch(error => {
                 console.log(error.message)

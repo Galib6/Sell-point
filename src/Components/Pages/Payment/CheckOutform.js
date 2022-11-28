@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const CheckOutform = ({ booking }) => {
     const [cardError, setCarderror] = useState("")
@@ -9,7 +10,7 @@ const CheckOutform = ({ booking }) => {
 
     const stripe = useStripe();
     const elements = useElements();
-    const { price, email, patient, _id } = booking;
+    const { price, email, patient, _id, ind } = booking;
     const [clientSecret, setClientSecret] = useState("");
 
     useEffect(() => {
@@ -100,6 +101,15 @@ const CheckOutform = ({ booking }) => {
                     if (data.insertedId) {
                         setSuccess("Congratulation! Your payment completed")
                         setTransectonId(paymentIntent.id)
+                        fetch(`http://localhost:5000/deleteproduct/${ind}`, {
+                            method: 'DELETE',
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.deletedCount > 0) {
+                                    toast.success(`Seller deleted successfully`)
+                                }
+                            })
                     }
                 })
 

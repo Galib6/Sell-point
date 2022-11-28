@@ -5,7 +5,7 @@ import CategoryItem from './CategoryItem/CategoryItem';
 
 const Homepage = () => {
     return (
-        <div className='mx-16'>
+        <div className='lg:mx-16 sm:mx-0'>
             <Carosel></Carosel>
             <Advertised></Advertised>
             <CategoryItem></CategoryItem>

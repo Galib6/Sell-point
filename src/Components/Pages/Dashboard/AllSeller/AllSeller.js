@@ -60,7 +60,7 @@ const Allusers = () => {
         <div>
             <h2 className='text-3xl mb-2'>All Sellers</h2>
             <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table w-full ">
 
                     <thead>
                         <tr>
@@ -82,7 +82,7 @@ const Allusers = () => {
                                     <td>{seller.type}</td>
                                     <td>
                                         <button className='btn btn-xs btn-danger' onClick={() => handleDeleteSeller(seller._id)}>Delete</button>
-                                        <button className='btn btn-xs btn-danger' onClick={() => handlevarify(seller)}>Varify</button></td>
+                                        <button className='btn btn-xs btn-danger ml-2' onClick={() => handlevarify(seller)}>Varify</button></td>
                                 </tr>)
                         }
 

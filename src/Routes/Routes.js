@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Blog from "../Components/Blog/Blog";
 import AllProducts from "../Components/Pages/AllProducts/AllProducts";
 import AddAProduct from "../Components/Pages/Dashboard/AddAProduct/AddAProduct";
 import Allbuyers from "../Components/Pages/Dashboard/AllBuyers/Allbuyers";
@@ -7,6 +8,7 @@ import DashboradHome from "../Components/Pages/Dashboard/Dashborad/DashboradHome
 import MYorder from "../Components/Pages/Dashboard/MyOrder/MYorder";
 import MyProductList from "../Components/Pages/Dashboard/MyProduct/MyProductList";
 import ReportedItems from "../Components/Pages/Dashboard/ReportedIitems/ReportedItems";
+import ErrorPage from "../Components/Pages/ErrorPage";
 import Homepage from "../Components/Pages/HomePage/Homepage";
 import Login from "../Components/Pages/Login/Login";
 import CheckOutform from "../Components/Pages/Payment/CheckOutform";
@@ -21,6 +23,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -39,6 +42,10 @@ export const router = createBrowserRouter([
                 path: "/signup",
                 element: <SignUp></SignUp>
             },
+            {
+                path: "/blog",
+                element: <Blog></Blog>
+            },
 
 
 
@@ -47,7 +54,7 @@ export const router = createBrowserRouter([
     {
         path: "/dashboard",
         element: <DashboradLayout></DashboradLayout>,
-        // errorElement: <DispayError></DispayError>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/dashboard",
