@@ -25,6 +25,8 @@ const DashboradLayout = () => {
                 <div className='col-span-1 '>
                     <ul className=" pt-20 menu p-4 w-80  text-base-content rounded-box min-h-screen border border-black-300">
                         {
+
+
                             isAdmin &&
                             <>
                                 <li><Link to="/dashboard/allseller">All Seller</Link></li>
