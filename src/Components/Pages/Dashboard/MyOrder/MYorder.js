@@ -9,6 +9,8 @@ const MYorder = () => {
     const { data: myorders = [], refetch, isLoading } = useQuery({
         queryKey: ["myorders"],
         queryFn: async () => {
+
+
             const res = await fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/myorders?email=${user?.email}`);
             const data = await res.json();
             console.log(data)
