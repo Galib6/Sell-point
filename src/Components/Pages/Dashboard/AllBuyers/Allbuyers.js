@@ -42,7 +42,11 @@ const Allbuyers = () => {
 
     if (isLoading) {
         return <Loading></Loading>
+
+
     }
+
+
 
     return (
         <div>
