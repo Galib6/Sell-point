@@ -51,12 +51,12 @@ const Advertised = () => {
                             >
                             </ModalFAdvertise>
                         }
+
                     </div>
                 </div >
             </div >
         );
     }
-
     else {
         return <div></div>
     }
