@@ -43,6 +43,8 @@ const Allusers = () => {
         console.log(seller)
         if (window.confirm("Are you sure to verify") === true) {
             fetch(`https://sell-point-server-ffnado53p-galib6.vercel.app/varified?email=${seller?.email}`)
+
+
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
