@@ -5,15 +5,15 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../context/AuthProvider';
 
 const AddAProduct = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const imagehoskey = "f8abb6d450f3ebe88a068da1d4b26fa7";
     const navigate = useNavigate()
     const { user } = useContext(AuthContext);
-    // console.log(user)
+    // //console.log(user)
 
 
     const handleAddaDoctor = data => {
-        // console.log(data)
+        // //console.log(data)
         const image = data.image[0];
         const formData = new FormData()
         formData.append("image", image)
@@ -25,7 +25,7 @@ const AddAProduct = () => {
             .then(res => res.json())
             .then(imgdata => {
                 if (imgdata.success) {
-                    // console.log(imgdata.data.url)
+                    // //console.log(imgdata.data.url)
                     const productData = {
                         categoryId: data.categoryId,
                         name: data.name,
@@ -40,7 +40,7 @@ const AddAProduct = () => {
                         advertise: false
 
                     }
-                    // console.log(productData.postTime)
+                    // //console.log(productData.postTime)
                     fetch("https://sell-point-server.vercel.app/addproduct", {
                         method: "POST",
                         headers: {
@@ -51,9 +51,10 @@ const AddAProduct = () => {
                     })
                         .then(res => res.json())
                         .then(res => {
-                            console.log(res)
+                            //console.log(res)
                             toast.success("Sucesfully product added")
-                            // navigate("/dashboard/managedoctors")
+                            navigate("/dashboard/myproducts")
+                            reset()
                         })
                 }
             })
@@ -105,7 +106,6 @@ const AddAProduct = () => {
                                 required: "photo is Required"
                             })}
                             className="select select-bordered w-full " required>
-                            <option selected disabled>Pick a Category</option>
                             <option value="01">SUV</option>
                             <option value="02" >Sports Car</option>
                             <option value="03" >Electric Car</option>

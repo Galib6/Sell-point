@@ -7,15 +7,12 @@ const Carosel = () => {
 
 
             <div className="hero min-h-screen" style={{ backgroundImage: `url("https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200")` }}>
-                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-overlay bg-opacity-80"></div>
                 <div className="hero-content text-center text-neutral-content">
-                    <div className="max-w-md">
-
+                    <div className="max-w-md text-white">
                         <h1 className="mb-5 text-5xl font-bold">Selling Point</h1>
-                        <p className="mb-5">Selling point the most trusted website ,Daily 6000+ selling site</p>
-                        <button className="btn btn-primary">Get Started</button>
-
-
+                        <p className="mb-5">Selling point the most trusted website ,Daily 6000+ selling site. <br /> Are you want to buy or sell your product? </p>
+                        <Link to="/signup"><button className="btn btn-primary btn-sm">Register Now >>>></button></Link>
                     </div>
                 </div>
             </div>
@@ -30,7 +27,7 @@ const Carosel = () => {
                             <img src="https://www.bugatti.com/fileadmin/_processed_/sei/p1/se-image-85e0e9ab23134961c88e4ecea2bff53f.jpg" className=" absolute w-3/5 border-8 right-5 top-1/2 rounded-lg shadow-2xl" alt='' />
                         </div>
                         <div className=''>
-                            <p className=' my-5 text-2xl font-bold text-orange-600'>About us</p>
+                            <p className=' my-5 text-2xl font-bold text-primary'>About us</p>
                             <h1 className="sm:text-xl lg:text-5xl font-bold">
                                 Website contains <br />
                                 500+ seller <br />

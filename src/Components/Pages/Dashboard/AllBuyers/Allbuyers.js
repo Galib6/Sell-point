@@ -10,25 +10,34 @@ const Allbuyers = () => {
     const navigate = useNavigate()
     const { user, logOut } = useContext(AuthContext)
     const [isAdmin] = useAdmin(user?.email)
-    console.log(isAdmin)
+    //console.log(isAdmin)
 
 
     const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ["buyers"],
         queryFn: async () => {
-            const res = await fetch("https://sell-point-server.vercel.app/allbuyers");
+            const res = await fetch("https://sell-point-server.vercel.app/allbuyers", {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('s-token')}`
+                }
+            });
             const data = await res.json();
-            console.log(data)
+            //console.log(data)
             return data;
         }
     })
 
+
+
+
+
+
     const handleDeleteBuyer = (id) => {
-        console.log(id)
+        //console.log(id)
         fetch(`https://sell-point-server.vercel.app/buyer/${id}`, {
             method: 'DELETE',
             // headers: {
-            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            //     authorization: `bearer ${localStorage.getItem('s-token')}`
             // }
         })
             .then(res => res.json())
@@ -58,8 +67,8 @@ const Allbuyers = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
+                            <th> <span className='hidden md:block'>Email</span> </th>
+                            <th> <span className='hidden md:block'>Role</span></th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -70,8 +79,8 @@ const Allbuyers = () => {
                                 <tr key={buyer._id}>
                                     <th>{i + 1}</th>
                                     <td>{buyer.name}</td>
-                                    <td>{buyer.email}</td>
-                                    <td>{buyer.type}</td>
+                                    <td> <span className='hidden md:block'>{buyer.email}</span> </td>
+                                    <td> <span className='hidden md:block'>{buyer.type}</span></td>
                                     <td><button className='btn btn-xs btn-danger' onClick={() => handleDeleteBuyer(buyer._id)}>Delete</button></td>
                                 </tr>)
                         }

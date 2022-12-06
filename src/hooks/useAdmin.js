@@ -8,7 +8,7 @@ const useAdmin = email => {
             fetch(`https://sell-point-server.vercel.app/requser?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data)
+                    // //console.log(data)
                     if (data?.type === "admin") {
                         setIsAdmin(true)
                         setAdminLoading(false)

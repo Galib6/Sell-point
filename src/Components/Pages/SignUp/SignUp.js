@@ -20,12 +20,12 @@ const SignUp = () => {
 
 
     const handleSignUp = (data) => {
-        console.log(data);
+        //console.log(data);
         setSignUPError('');
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                //console.log(user);
                 toast.success('User Created Successfully.')
                 const userInfo = {
                     displayName: data.name,
@@ -41,7 +41,7 @@ const SignUp = () => {
                     .catch(err => console.log(err));
             })
             .catch(error => {
-                console.log(error)
+                //console.log(error)
                 setSignUPError(error.message)
             });
     }
@@ -58,7 +58,7 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 // setCreatedUserEmail(email);
-                console.log(data)
+                //console.log(data)
             })
     }
 
@@ -74,7 +74,7 @@ const SignUp = () => {
                     email: user.email
                 }
 
-                console.log(currentUser)
+                //console.log(currentUser)
                 // get jwt token
                 fetch('https://sell-point-server.vercel.app/jwt', {
                     method: 'POST',
@@ -86,7 +86,7 @@ const SignUp = () => {
 
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        //console.log(data);
                         // local storage is the easiest but not the best place to store jwt token
                         localStorage.setItem('s-token', data.token);
                     });
@@ -101,13 +101,13 @@ const SignUp = () => {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",
-                        // authorization: `bearer ${localStorage.getItem("accessToken")}`
+                        // authorization: `bearer ${localStorage.getItem("s-token")}`
                     },
                     body: JSON.stringify(userData)
                 })
                     .then(res => res.json())
                     .then(res => {
-                        console.log(res)
+                        //console.log(res)
                         setLoading(false)
                     })
 

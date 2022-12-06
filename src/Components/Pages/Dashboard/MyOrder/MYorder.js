@@ -1,15 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { HiMenuAlt1 } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../context/AuthProvider';
 import Loading from '../../../Shared/Loading/Loading';
+import Mysingorder from './mysingorder';
 
 const MYorder = () => {
     const { user } = useContext(AuthContext)
+    // const [myordera, setMyorders] = useState([])
     const { data: myorders = [], refetch, isLoading } = useQuery({
         queryKey: ["myorders"],
         queryFn: async () => {
-
 
             const res = await fetch(`https://sell-point-server.vercel.app/myorders?email=${user?.email}`);
             const data = await res.json();
@@ -18,24 +20,30 @@ const MYorder = () => {
         }
     })
 
+
     if (isLoading) {
         return <Loading></Loading>
+    }
+
+    if (!isLoading && myorders.length < 1) {
+        return <h1 className='min-h-screen text-3xl'>No order yet !!!</h1>
+
     }
 
 
     return (
         <div>
-            <h2 className='text-3xl mb-2'>All buyers</h2>
+            <h2 className='text-3xl mb-2'>All Orders</h2>
             <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table w-full table-auto">
 
                     <thead>
                         <tr>
                             <th>Sl</th>
-                            <th>Product Name</th>
-                            <th>Meeting Location</th>
-                            <th>Booking Date</th>
-                            <th>Pay</th>
+                            <th> Product Name</th>
+                            <th><span className='hidden md:block'>Meeting Location</span></th>
+                            <th><span className='hidden md:block'>Booking Date</span></th>
+                            <th>Payment Status</th>
 
                         </tr>
                     </thead>
@@ -43,17 +51,11 @@ const MYorder = () => {
 
                         {
                             myorders?.map((myorder, i) =>
-                                <tr key={myorder._id}>
-                                    <th>{i + 1}</th>
-                                    <td>{myorder.username}</td>
-                                    <td>{myorder.location}</td>
-                                    <td>{myorder.time}</td>
-                                    <td>
-                                        {
-                                            myorder?.paid ? <h2 className='bg-lime-400'>Paid</h2> : <Link to={`/dashboard/payment/${myorder._id}`}><button className='btn btn-sm btn-accent'>Pay</button></Link>
-                                        }
-                                    </td>
-                                </tr>)
+                                <Mysingorder
+                                    key={myorder._Id}
+                                    myorder={myorder}
+                                    i={i}
+                                ></Mysingorder>)
                         }
 
                     </tbody>

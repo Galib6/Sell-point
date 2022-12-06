@@ -8,55 +8,44 @@ const ModalFAdvertise = ({ product, setProduct, refetch }) => {
 
     const { register, handleSubmit } = useForm();
     const { user } = useContext(AuthContext)
-    console.log(product)
+    //console.log(product)
     const navigate = useNavigate()
 
     const handleBookNow = data => {
-        console.log(data);
+        //console.log(data);
         const date = {
             time: Date().slice(0, 15),
-            price: product.resalePrice * 10
+            price: product.resalePrice * 10,
+            ind: product.ind
         }
         const updatedData = Object.assign(data, date)
-        console.log(updatedData)
+        //console.log(updatedData)
 
         fetch(`https://sell-point-server.vercel.app/bookings`, {
             method: "POST",
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                // authorization: `bearer ${localStorage.getItem("s-token")}`
             },
             body: JSON.stringify(updatedData)
         })
             .then(res => res.json())
             .then(data => {
                 // setCreatedUserEmail(email);
-                console.log(data)
+                // console.log(data)
                 console.log(product._id)
-                fetch(`https://sell-point-server.vercel.app/bookings/${product?.ind}`)
+                fetch(`https://sell-point-server.vercel.app/bookings/${product?._id}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data.modifiedCount > 0) {
                             setProduct(null)
                             toast.success("Successfully booked.")
-                            fetch(`https://sell-point-server.vercel.app/changestatus/${product?.ind}`)
+                            fetch(`https://sell-point-server.vercel.app/changestatus/${product?._id}`)
                                 .then(res => res.json())
                                 .then(data => {
-                                    console.log(data)
+                                    //console.log(data)
                                     if (data.modifiedCount > 0) {
-                                        toast.success("Sucesfully status changed.")
-                                        fetch(`https://sell-point-server.vercel.app/advertised/${product._id}`, {
-                                            method: 'DELETE',
-                                            // headers: {
-                                            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-                                            // }
-                                        })
-                                            .then(res => res.json())
-                                            .then(data => {
-                                                if (data.deletedCount > 0) {
-                                                    toast.success(`Removed from advertised successfully`)
-
-                                                }
-                                            })
+                                        toast.success("Successfully book confirmed.")
                                     }
                                 })
 

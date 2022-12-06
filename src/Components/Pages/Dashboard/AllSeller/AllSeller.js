@@ -8,25 +8,29 @@ import Loading from '../../../Shared/Loading/Loading';
 const Allusers = () => {
     const { user, logOut } = useContext(AuthContext)
     const [isAdmin] = useAdmin(user?.email)
-    console.log(isAdmin)
+    //console.log(isAdmin)
 
     const { data: sellers = [], refetch, isLoading } = useQuery({
         queryKey: ["sellers"],
         queryFn: async () => {
-            const res = await fetch("https://sell-point-server.vercel.app/allsellers");
+            const res = await fetch("https://sell-point-server.vercel.app/allsellers", {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('s-token')}`
+                }
+            });
             const data = await res.json();
-            console.log(data)
+            //console.log(data)
             return data;
 
         }
     })
 
     const handleDeleteSeller = (id) => {
-        console.log(id)
+        //console.log(id)
         fetch(`https://sell-point-server.vercel.app/seller/${id}`, {
             method: 'DELETE',
             // headers: {
-            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            //     authorization: `bearer ${localStorage.getItem('s-token')}`
             // }
         })
             .then(res => res.json())
@@ -40,14 +44,14 @@ const Allusers = () => {
 
 
     const handlevarify = (seller) => {
-        console.log(seller)
+        //console.log(seller)
         if (window.confirm("Are you sure to verify") === true) {
             fetch(`https://sell-point-server.vercel.app/varified?email=${seller?.email}`)
 
 
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+                    //console.log(data)
                     toast.success("Successfully varified")
 
                 })
@@ -72,8 +76,8 @@ const Allusers = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
+                            <th> <span className='hidden md:block'>Email</span> </th>
+                            <th> <span className='hidden md:block'>Role</span> </th>
                             <th>Delete/Varify</th>
                         </tr>
                     </thead>
@@ -84,8 +88,8 @@ const Allusers = () => {
                                 <tr key={seller._id}>
                                     <th>{i + 1}</th>
                                     <td>{seller.name}</td>
-                                    <td>{seller.email}</td>
-                                    <td>{seller.type}</td>
+                                    <td> <span className='hidden md:block'>{seller.email}</span> </td>
+                                    <td> <span className='hidden md:block'>{seller.type}</span> </td>
                                     <td>
                                         <button className='btn btn-xs btn-danger' onClick={() => handleDeleteSeller(seller._id)}>Delete</button>
                                         <button className='btn btn-xs btn-danger ml-2' onClick={() => handlevarify(seller)}>Varify</button></td>

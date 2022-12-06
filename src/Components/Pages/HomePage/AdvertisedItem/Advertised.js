@@ -1,26 +1,33 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
-import Modal from '../../../Shared/Modal/Modal';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../../../context/AuthProvider';
+import Loading2 from '../../../Shared/Loading2/Loading2';
 import ModalFAdvertise from '../../../Shared/ModalFAdvertise/ModalFAdvertise';
 import ProductCard from '../../AllProducts/ProductCard.js/ProductCard';
 
 const Advertised = () => {
+    const { user } = useContext(AuthContext)
     const [product, setProduct] = useState(null)
     const [button, setbutton] = useState()
 
-    const { data: products = [], refetch } = useQuery({
+    const { data: products = [], refetch, isLoading } = useQuery({
         queryKey: ["prodcuts"],
         queryFn: async () => {
-            const res = await fetch('https://sell-point-server.vercel.app/advertised');
+            const res = await fetch(`https://sell-point-server.vercel.app/advertisedproduct`)
             const data = await res.json();
             console.log(data)
             return data;
+
         }
     })
 
+    if (!user) {
+        return <div></div>
+    }
+    if (isLoading) {
+        return <Loading2></Loading2>
+    }
 
-    console.log(products)
     if (products.length > 0) {
         return (
             <div>

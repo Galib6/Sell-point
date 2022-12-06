@@ -8,9 +8,12 @@ const useSeller = email => {
             fetch(`https://sell-point-server.vercel.app/requser?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data)
+                    // //console.log(data)
                     if (data.type === "seller") {
                         setIsSeller(true)
+                        setSellerLoading(false)
+                    }
+                    else {
                         setSellerLoading(false)
                     }
                 })

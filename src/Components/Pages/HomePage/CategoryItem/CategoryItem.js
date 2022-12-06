@@ -29,7 +29,7 @@ const CategoryItem = () => {
                             <div className="card-body">
                                 <h2 className="card-title">{category.name}</h2>
                                 <div className="card-actions ">
-                                    <button className="btn btn-primary btn-sm w-full"><Link to={`/category/${category.id}`}>View All Cars</Link></button>
+                                    <Link className="btn btn-primary btn-sm w-full" to={`/category/${category.id}`}><button >View All Cars</button></Link>
                                 </div>
                             </div>
                         </div>
@@ -41,8 +41,8 @@ const CategoryItem = () => {
                 <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
                     <div className="max-w-xl sm:mx-auto lg:max-w-2xl">
                         <div className="flex flex-col mb-16 sm:text-center sm:mb-0">
-                            <a href="/" className="mb-6 sm:mx-auto">
-                                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-teal-accent-400">
+                            <a href="/" className="mb-3 sm:mx-auto">
+                                <div className="flex items-center justify-center w-24 h-24 rounded-full bg-teal-accent-400">
                                     <img src="https://www.pngmart.com/files/22/Car-Logo-PNG-Transparent.png" alt="" />
                                 </div>
                             </a>

@@ -5,7 +5,7 @@ import { AuthContext } from '../../../context/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
-    console.log(user)
+    //console.log(user)
     const navigate = useNavigate()
     const handleLogOut = () => {
         logOut()
@@ -27,7 +27,7 @@ const Header = () => {
                     </ul>
 
                 </div>
-                <Link to="/" className="btn btn-ghost normal-case md:flex sm:hidden md:text-2xl "><span className='ml-1'>Selling Point</span></Link>
+                <Link to="/" className="btn btn-ghost normal-case md:flex sm:hidden md:text-2xl "><img src="1.png" alt="" className='h-10 w-10' /><span className='ml-1 '>Selling Point</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex ">
                 <ul className="menu menu-horizontal p-0">

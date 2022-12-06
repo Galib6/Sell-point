@@ -18,7 +18,7 @@ const CheckOutform = ({ booking }) => {
         fetch("https://sell-point-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            authorization: `bearer ${localStorage.getItem("s-token")}`,
             body: JSON.stringify({ price }),
         })
             .then((res) => res.json())
@@ -79,6 +79,7 @@ const CheckOutform = ({ booking }) => {
 
             return;
         }
+        console.log(paymentIntent)
         if (paymentIntent.status === "succeeded") {
             console.log("card-info", card)
             // store data
@@ -86,13 +87,13 @@ const CheckOutform = ({ booking }) => {
                 price,
                 transectionId: paymentIntent.id,
                 email,
-                productId: _id
+                productId: booking._id
             }
             fetch("https://sell-point-server.vercel.app/payments", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
-                    // authorization: `bearer ${localStorage.getItem("accessToken")}`
+                    // authorization: `bearer ${localStorage.getItem("s-token")}`
                 },
                 body: JSON.stringify(payment)
             })
@@ -101,7 +102,7 @@ const CheckOutform = ({ booking }) => {
                     if (data.insertedId) {
                         setSuccess("Congratulation! Your payment completed")
                         setTransectonId(paymentIntent.id)
-                        fetch(`https://sell-point-server.vercel.app/deleteproduct/${ind}`, {
+                        fetch(`https://sell-point-server.vercel.app/deleteproduct/${booking?.ind}`, {
                             method: 'DELETE',
                         })
                             .then(res => res.json())

@@ -7,18 +7,18 @@ import { AuthContext } from '../../../context/AuthProvider';
 const Modal = ({ product, setProduct }) => {
     const { register, handleSubmit } = useForm();
     const { user } = useContext(AuthContext)
-    console.log(product)
+    //console.log(product)
     const navigate = useNavigate()
 
     const handleBookNow = data => {
-        console.log(data);
+        //console.log(data);
         const date = {
             time: Date().slice(0, 15),
             price: product.resalePrice * 10,
             ind: product._id
         }
         const updatedData = Object.assign(data, date)
-        console.log(updatedData)
+        //console.log(updatedData)
 
         fetch(`https://sell-point-server.vercel.app/bookings`, {
             method: "POST",
@@ -31,8 +31,8 @@ const Modal = ({ product, setProduct }) => {
             .then(res => res.json())
             .then(data => {
                 // setCreatedUserEmail(email);
-                console.log(data)
-                console.log(product._id)
+                //console.log(data)
+                //console.log(product._id)
                 fetch(`https://sell-point-server.vercel.app/bookings/${product?._id}`)
                     .then(res => res.json())
                     .then(data => {

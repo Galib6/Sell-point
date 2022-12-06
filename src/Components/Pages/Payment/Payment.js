@@ -14,7 +14,7 @@ const Payment = () => {
 
     return (
         <div>
-            <h3 className='text-3xl'>Payment for {productname}</h3>
+            <h3 className='text-3xl'>Payment for {data.productname}</h3>
             <div className="divider"></div>
             <p className='text-xl'>Please pay: <strong>${price}</strong> for the order on {time}</p>
             <div className='w-96 my-6'>
